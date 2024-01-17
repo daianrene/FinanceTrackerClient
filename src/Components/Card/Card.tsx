@@ -1,23 +1,24 @@
+import { Link } from "react-router-dom";
 import { CompanySearch } from "../../company";
 import AddPortfolio from "../Portfolio/AddPortfolio/AddPortfolio";
 import "./Card.css";
 
 interface Props {
-  id: string;
   searchResult: CompanySearch;
-  onPortfolioCreate: (e: React.FormEvent<HTMLFormElement>) => void;
+  onPortfolioCreate: (e: string) => void;
 }
 
-const Card: React.FC<Props> = ({ id, searchResult, onPortfolioCreate }) => {
+const Card: React.FC<Props> = ({ searchResult, onPortfolioCreate }) => {
   return (
-    <div className="card">
-      <div className="details">
-        <h2>
-          {searchResult.name} ({searchResult.symbol})
-        </h2>
-        <p>{searchResult.currency}</p>
-      </div>
-      <p className="infon">
+    <div className="flex flex-col items-center justify-between w-full p-6 bg-slate-100 rounded-lg md:flex-row">
+      <Link
+        to={`/company/${searchResult.symbol}`}
+        className="font-bold text-center text-black md:text-left"
+      >
+        {searchResult.name} ({searchResult.symbol})
+      </Link>
+      <p className="text-black">{searchResult.currency}</p>
+      <p className="font-bold text-black">
         {searchResult.exchangeShortName} - {searchResult.stockExchange}
       </p>
       <AddPortfolio
