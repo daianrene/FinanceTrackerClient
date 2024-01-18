@@ -29,7 +29,7 @@ export const router = createBrowserRouter([
         path: "company/:ticker",
         element: <CompanyPage />,
         children: [
-          { path: "company-porfile", element: <CompanyProfile /> },
+          { path: "company-profile", element: <CompanyProfile /> },
           { path: "income-statement", element: <IncomeStatement /> },
         ],
       },
