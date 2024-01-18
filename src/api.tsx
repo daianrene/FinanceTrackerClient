@@ -1,5 +1,12 @@
 import axios from "axios";
-import { CompanyKeyMetrics, CompanyProfile, CompanySearch } from "./company";
+import {
+  CompanyBalanceSheet,
+  CompanyCashFlow,
+  CompanyIncomeStatement,
+  CompanyKeyMetrics,
+  CompanyProfile,
+  CompanySearch,
+} from "./company";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -41,6 +48,57 @@ export const getKeyMetrics = async (query: string) => {
   try {
     const data = await axios.get<CompanyKeyMetrics[]>(
       `https://financialmodelingprep.com/api/v3/key-metrics-ttm/${query}?apikey=${apiKey}`
+    );
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log("Error message: ", error.message);
+      return error.message;
+    } else {
+      console.log("Unexpected error: ", error);
+      return "Unexpected error has occured.";
+    }
+  }
+};
+
+export const getIncomeStatement = async (query: string) => {
+  try {
+    const data = await axios.get<CompanyIncomeStatement[]>(
+      `https://financialmodelingprep.com/api/v3/income-statement/${query}?limit=40&apikey=${apiKey}`
+    );
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log("Error message: ", error.message);
+      return error.message;
+    } else {
+      console.log("Unexpected error: ", error);
+      return "Unexpected error has occured.";
+    }
+  }
+};
+
+export const getBalanceSheet = async (query: string) => {
+  try {
+    const data = await axios.get<CompanyBalanceSheet[]>(
+      `https://financialmodelingprep.com/api/v3/balance-sheet-statement/${query}?limit=40&apikey=${apiKey}`
+    );
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log("Error message: ", error.message);
+      return error.message;
+    } else {
+      console.log("Unexpected error: ", error);
+      return "Unexpected error has occured.";
+    }
+  }
+};
+
+export const getCashFlowStatement = async (query: string) => {
+  try {
+    const data = await axios.get<CompanyCashFlow[]>(
+      `https://financialmodelingprep.com/api/v3/cash-flow-statement/${query}?limit=40&apikey=${apiKey}`
     );
     return data;
   } catch (error) {

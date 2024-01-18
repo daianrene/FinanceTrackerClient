@@ -1,6 +1,9 @@
 import RatioList from "../../Components/RatioList/RatioList";
 import Table from "../../Components/Table/Table";
-import { TestDataCompany } from "../../Components/Table/testData";
+import {
+  TestDataCompany,
+  testIncomeStatementData,
+} from "../../Components/Table/testData";
 import { CompanyKeyMetrics } from "../../company";
 
 const tableConfig = [
@@ -16,7 +19,7 @@ const DesignPage = () => {
     <>
       <h1>Design Page</h1>
       <RatioList data={TestDataCompany} config={tableConfig} />
-      <Table />
+      <Table data={testIncomeStatementData} config={tableConfig} />
     </>
   );
 };

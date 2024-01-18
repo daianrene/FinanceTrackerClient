@@ -5,7 +5,7 @@ interface Props {
 
 const RatioList = ({ data, config }: Props) => {
   return (
-    <div className="bg-white shadow rounded-lg m-4 p-4 sm:p-6 h-full">
+    <div className="bg-white shadow rounded-lg m-4 p-4 sm:p-6 w-full">
       <ul className="divide-y divide-gray-200">
         {config.map((row: any) => (
           <li className="py-3 sm:py-4 ">

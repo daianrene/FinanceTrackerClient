@@ -1,40 +1,28 @@
-import { testIncomeStatementData } from "./testData";
+interface Props {
+  config: any;
+  data: any;
+}
 
-const data = testIncomeStatementData;
+const Table = ({ config, data }: Props) => {
+  const renderedRows = data.map((company) => (
+    <tr key={company.cik}>
+      {config.map((c: any) => (
+        <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-800">
+          {c.render(company)}
+        </td>
+      ))}
+    </tr>
+  ));
 
-type Company = (typeof data)[0];
+  const renderedHeaders = config.map((c: any) => (
+    <th
+      className="p-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider"
+      key={c.label}
+    >
+      {c.label}
+    </th>
+  ));
 
-const configs = [
-  {
-    label: "Accepted Date",
-    render: (company: Company) => company.acceptedDate,
-  },
-  {
-    label: "Cost of revenue",
-    render: (company: Company) => company.costOfRevenue,
-  },
-];
-
-const renderedRows = data.map((company) => (
-  <tr key={company.cik}>
-    {configs.map((c) => (
-      <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-800">
-        {c.render(company)}
-      </td>
-    ))}
-  </tr>
-));
-
-const renderedHeaders = configs.map((c) => (
-  <th
-    className="p-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider"
-    key={c.label}
-  >
-    {c.label}
-  </th>
-));
-
-const Table = () => {
   return (
     <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8">
       <table>
