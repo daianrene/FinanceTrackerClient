@@ -74,18 +74,24 @@ const config = [
   },
 ];
 
-type Props = {};
-const BalanceSheet = (props: Props) => {
+const BalanceSheet = () => {
   const ticker = useOutletContext<string>();
   const [balanceSheet, setBalanceSheet] = useState<CompanyBalanceSheet>();
 
   useEffect(() => {
     const fetchBalanceSheet = async () => {
       const result = await getBalanceSheet(ticker);
-      setBalanceSheet(result?.data[0]);
+
+      if (typeof result === "string") {
+        console.log(result);
+      } else if (result.data.length > 0) {
+        setBalanceSheet(result?.data[0]);
+      } else {
+        setBalanceSheet(result?.data[0]);
+      }
     };
     fetchBalanceSheet();
-  }, []);
+  }, [ticker]);
 
   return (
     <>

@@ -83,12 +83,19 @@ const CompanyProfile = () => {
 
   useEffect(() => {
     const getCompanyKeyMetrics = async () => {
-      const value = await getKeyMetrics(ticker);
-      setCompanyData(value?.data[0]);
+      const result = await getKeyMetrics(ticker);
+
+      if (typeof result === "string") {
+        console.log(result);
+      } else if (result.data.length > 0) {
+        setCompanyData(result?.data[0]);
+      } else {
+        setCompanyData(result?.data[0]);
+      }
     };
 
     getCompanyKeyMetrics();
-  }, []);
+  }, [ticker]);
 
   return (
     <>

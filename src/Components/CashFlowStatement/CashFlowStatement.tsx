@@ -57,11 +57,18 @@ const CashFlowStatement = () => {
   useEffect(() => {
     const cashFlowInstatementFetch = async () => {
       const result = await getCashFlowStatement(ticker);
-      setCashFlowData(result!.data);
+
+      if (typeof result === "string") {
+        console.log(result);
+      } else if (result.data.length > 0) {
+        setCashFlowData(result.data);
+      } else {
+        setCashFlowData(result.data);
+      }
     };
 
     cashFlowInstatementFetch();
-  }, []);
+  }, [ticker]);
 
   return (
     <div>

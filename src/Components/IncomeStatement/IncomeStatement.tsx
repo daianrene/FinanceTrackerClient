@@ -85,11 +85,18 @@ const IncomeStatement = () => {
   useEffect(() => {
     const incomeStatementFetch = async () => {
       const result = await getIncomeStatement(ticker);
-      setIncomeStatement(result!.data);
+
+      if (typeof result === "string") {
+        console.log(result);
+      } else if (result.data.length > 0) {
+        setIncomeStatement(result.data);
+      } else {
+        setIncomeStatement(result.data);
+      }
     };
 
     incomeStatementFetch();
-  }, []);
+  }, [ticker]);
 
   return (
     <div>
