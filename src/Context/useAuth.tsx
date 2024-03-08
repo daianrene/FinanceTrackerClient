@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { UserProfile } from "../models/User";
+import { UserProfile } from "../Models/User";
 import { useNavigate } from "react-router-dom";
-import { loginAPI, registerAPI } from "../services/AuthService";
+import { loginAPI, registerAPI } from "../Services/AuthService";
 import { toast } from "react-toastify";
 import axios from "axios";
 
@@ -30,7 +30,7 @@ export const UserProvider = ({ children }: Props) => {
     if (userLS && tokenLS) {
       setUser(JSON.parse(userLS));
       setToken(tokenLS);
-      axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+      axios.defaults.headers.common["Authorization"] = "Bearer " + tokenLS;
     }
     setIsReady(true);
   }, []);

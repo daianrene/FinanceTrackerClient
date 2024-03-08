@@ -1,6 +1,6 @@
 import axios from "axios";
 import { handleError } from "../Helpers/ErrorHandler";
-import { UserProfileToken } from "../models/User";
+import { UserProfileToken } from "../Models/User";
 
 const api = "https://localhost:7213/api/";
 

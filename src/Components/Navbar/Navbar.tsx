@@ -24,7 +24,7 @@ const Navbar = () => {
             </div>
             <button
               onClick={logout}
-              className="px-8 py-3 font-bold rounded text-white bg-lightGreen hover:opacity-70"
+              className="px-8 py-3 font-bold rounded text-white bg-lightBlue hover:opacity-70"
             >
               Logout
             </button>
@@ -36,7 +36,7 @@ const Navbar = () => {
             </Link>
             <Link
               to="/register"
-              className="px-8 py-3 font-bold rounded text-white bg-lightGreen hover:opacity-70"
+              className="px-8 py-3 font-bold rounded text-white bg-lightBlue hover:opacity-70"
             >
               Register
             </Link>

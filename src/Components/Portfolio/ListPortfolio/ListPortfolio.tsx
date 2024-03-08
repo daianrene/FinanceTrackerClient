@@ -1,7 +1,8 @@
+import { PortfolioGet } from "../../../Models/Portfolio";
 import CardPortfolio from "../CardPortfolio/CardPortfolio";
 
 interface Props {
-  portfolioValues: string[];
+  portfolioValues: PortfolioGet[];
   onPortfolioDelete: (e: string) => void;
 }
 
@@ -18,7 +19,6 @@ const ListPortfolio: React.FC<Props> = ({
         {portfolioValues.length > 0 ? (
           portfolioValues.map((pV) => (
             <CardPortfolio
-              key={pV}
               portfolioValue={pV}
               onPortfolioDelete={onPortfolioDelete}
             />

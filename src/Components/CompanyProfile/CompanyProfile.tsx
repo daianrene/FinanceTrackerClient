@@ -8,6 +8,7 @@ import {
   formatLargeNonMonetaryNumber,
   formatRatio,
 } from "../../Helpers/NumberFormatting";
+import StockComment from "../StockComment/StockComment";
 
 const tableConfig = [
   {
@@ -100,7 +101,10 @@ const CompanyProfile = () => {
   return (
     <>
       {companyData ? (
-        <RatioList data={companyData} config={tableConfig} />
+        <>
+          <RatioList data={companyData} config={tableConfig} />
+          <StockComment stockSymbol={ticker} />
+        </>
       ) : (
         <Spinner />
       )}
